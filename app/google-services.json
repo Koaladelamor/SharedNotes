@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "829559576709",
+    "project_id": "sharednotes-d94ab",
+    "storage_bucket": "sharednotes-d94ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829559576709:android:5a06d4f54def35ecbc31ec",
+        "android_client_info": {
+          "package_name": "com.example.sharednotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829559576709-r8s7t8ecvasd7naf2mp2i1su4aptdri0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi3zM0NJatNT-vVObc_3l-j9UAZYOgzko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829559576709-r8s7t8ecvasd7naf2mp2i1su4aptdri0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

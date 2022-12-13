@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/firstButton"
+        android:title="My Notes"
+        android:icon="@drawable/ic_baseline_person_24"></item>
+    <item android:id="@+id/secondButton"
+        android:title="Requests"
+        android:icon="@drawable/ic_baseline_person_24"></item>
+    <item android:id="@+id/thirdButton"
+        android:title="Sent"
+        android:icon="@drawable/ic_baseline_person_24"></item>
+</menu>

@@ -5,20 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/particleImage"
-        android:layout_width="66dp"
-        android:layout_height="73dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/particleCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_person_24" />
+        app:layout_constraintVertical_bias="1.0">
 
-    <TextView
-        android:id="@+id/particleName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="my name"
-        app:layout_constraintBottom_toBottomOf="@+id/particleImage"
-        app:layout_constraintStart_toEndOf="@+id/particleImage"
-        app:layout_constraintTop_toTopOf="@+id/particleImage" />
+        <TextView
+            android:id="@+id/particleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="my name" />
+
+        <ImageView
+            android:id="@+id/particleImage"
+            android:layout_width="66dp"
+            android:layout_height="73dp"
+            app:srcCompat="@drawable/ic_baseline_person_24" />
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
