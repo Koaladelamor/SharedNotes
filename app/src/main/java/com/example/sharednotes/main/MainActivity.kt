@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        setFragment(myNotesFrag)
     }
 
     fun setFragment(fragment: Fragment){
