@@ -1,6 +1,7 @@
 package com.example.sharednotes.main
 
 class Note(
+    var id: Int = -1,
     var title: String="",
     var description: String="",
     var hasReminder: Boolean=false,
@@ -8,7 +9,6 @@ class Note(
     var recipient: String="",
     var sender: String=""
 ) {
-
     fun editNote(_title : String, _description : String, _recipient : String, _sender : String)
     {
         title = _title
@@ -16,5 +16,4 @@ class Note(
         recipient = _recipient
         sender = _sender
     }
-
 }

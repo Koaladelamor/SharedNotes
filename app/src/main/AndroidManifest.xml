@@ -17,7 +17,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".CreateNoteActivity"
+            android:name=".SharedPreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.RealTimeDataBaseActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".dragndrop.DragAndDropActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.CreateNoteActivity"
             android:exported="false" />
         <activity
             android:name=".clase.ButtonBarActivity"
@@ -33,13 +48,7 @@
             android:exported="true" />
         <activity
             android:name=".main.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
