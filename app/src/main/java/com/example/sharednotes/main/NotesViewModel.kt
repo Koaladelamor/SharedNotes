@@ -1,5 +1,6 @@
 package com.example.sharednotes.main
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,6 +18,27 @@ class NotesViewModel : ViewModel() {
             .getReference("notes")
 
     var currentUserNotes = MutableLiveData<ArrayList<Note>>()
+
+    fun getNotesFromUser(user: User){
+        database.child(user.username).get().addOnSuccessListener {
+            //Log.i("firebase", "Got value ${it.value}")
+            val userData = it.getValue(User::class.java) ?: return@addOnSuccessListener
+            currentUserNotes.postValue(userData.userNotes)
+        }.addOnFailureListener{
+            //Log.e("firebase", "Error getting data", it)
+        }
+    }
+
+    fun addNoteToUser(user: User, note: Note){
+        currentUserNotes.value?.add(note)
+        notifyObservers()
+        database.child(user.username).setValue(currentUserNotes.value)
+    }
+
+    private fun notifyObservers() {
+        // funcion para avisar a los observers de currentUserNotes porque el add note no modifica la referencia
+        currentUserNotes.postValue(currentUserNotes.value)
+    }
 
     fun writeUserNotes(user: User) {
         database.child(user.username).setValue(user)

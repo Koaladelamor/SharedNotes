@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     //login
                     val intent = Intent(this, MainActivity::class.java)
+//                    intent.putExtra()
                     startActivity(intent)
             }.addOnFailureListener{
                     Toast.makeText(this, "Incorrect user or password", Toast.LENGTH_SHORT).show()

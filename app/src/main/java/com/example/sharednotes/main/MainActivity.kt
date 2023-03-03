@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+//        intent.extras?.getBoolean("isValidUser")
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val myNotesFrag = MyNotesFragment()

@@ -45,7 +45,7 @@ class MyNotesRecyclerViewAdapter(
 
     private fun showRenameDialog(note: Note, position: Int) {
         val builder = AlertDialog.Builder(context);
-        builder.setTitle("Particle name")
+        builder.setTitle("Note title")
 
         val editText = EditText(context)
         editText.setText(note.title)
@@ -54,8 +54,9 @@ class MyNotesRecyclerViewAdapter(
         builder.setPositiveButton("Ok") { _, _ ->
             note.title = editText.text.toString()
             notifyItemChanged(position)
+            // TODO: actualizar en bd
         }
-        builder.setPositiveButton("Cancel") { _, _ ->
+        builder.setNegativeButton("Cancel") { _, _ ->
             Toast.makeText(context, "S'ha apretat Cancel", Toast.LENGTH_SHORT).show()
         }
         builder.show()

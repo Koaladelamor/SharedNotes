@@ -4,6 +4,17 @@
     package="com.example.sharednotes">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.bluetooth"
+        android:required="true"/>
 
     <application
         android:allowBackup="true"
@@ -17,19 +28,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SharedPreferencesActivity"
+            android:name=".clase.ImageCaptureActivity"
+            android:exported="true" />
+        <activity
+            android:name=".main.SharedPreferencesActivity"
             android:exported="false" />
         <activity
             android:name=".main.RealTimeDataBaseActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
-            android:name=".dragndrop.DragAndDropActivity"
+            android:name=".clase.DragAndDropActivity"
             android:exported="false" />
         <activity
             android:name=".main.CreateNoteActivity"
@@ -48,7 +56,13 @@
             android:exported="true" />
         <activity
             android:name=".main.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
     </application>
 
 </manifest>
