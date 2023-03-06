@@ -1,12 +1,11 @@
 package com.example.sharednotes.main
 
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -18,21 +17,31 @@ class NotesViewModel : ViewModel() {
             .getReference("notes")
 
     var currentUserNotes = MutableLiveData<ArrayList<Note>>()
-
+    var isListenerAdded = false
     fun getNotesFromUser(user: User){
         database.child(user.username).get().addOnSuccessListener {
-            //Log.i("firebase", "Got value ${it.value}")
-            val userData = it.getValue(User::class.java) ?: return@addOnSuccessListener
-            currentUserNotes.postValue(userData.userNotes)
+            if (it.value == null)
+                return@addOnSuccessListener
+
+            val genericTypeIndicator = object : GenericTypeIndicator<ArrayList<Note>>() {}
+            val notesList = it.getValue(genericTypeIndicator)
+            currentUserNotes.postValue(notesList ?: arrayListOf())
+
+            if (notesList != null && !isListenerAdded) {
+                subscribeAt(user)
+            }
         }.addOnFailureListener{
-            //Log.e("firebase", "Error getting data", it)
+
         }
     }
 
     fun addNoteToUser(user: User, note: Note){
         currentUserNotes.value?.add(note)
         notifyObservers()
-        database.child(user.username).setValue(currentUserNotes.value)
+        database.child(user.username).setValue(currentUserNotes.value).addOnSuccessListener {
+            if (!isListenerAdded)
+                subscribeAt(user)
+        }
     }
 
     private fun notifyObservers() {
@@ -47,16 +56,19 @@ class NotesViewModel : ViewModel() {
         currentUserNotes.postValue(user.userNotes)
     }
 
-    fun subscribeAt(user: User) {
+    private fun subscribeAt(user: User) {
         database.child(user.username)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val u = snapshot.getValue(User::class.java) ?: return
-                    currentUserNotes.postValue(u.userNotes)
+                    isListenerAdded = true
+                    val genericTypeIndicator = object : GenericTypeIndicator<ArrayList<Note>>() {}
+                    val notesList = snapshot.getValue(genericTypeIndicator)
+                    currentUserNotes.postValue(notesList ?: arrayListOf())
                 }
 
                 override fun onCancelled(error: DatabaseError) = Unit
 
             })
     }
+
 }

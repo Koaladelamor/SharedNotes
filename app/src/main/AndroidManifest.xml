@@ -13,8 +13,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <uses-feature android:name="android.hardware.bluetooth"
-        android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -28,41 +29,39 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".main.RegisterActivity"
+            android:exported="true" />
+        <activity
             android:name=".clase.ImageCaptureActivity"
             android:exported="true" />
         <activity
             android:name=".main.SharedPreferencesActivity"
             android:exported="false" />
         <activity
-            android:name=".main.RealTimeDataBaseActivity"
+            android:name=".clase.RealTimeDataBaseActivity"
             android:exported="true" />
         <activity
             android:name=".clase.DragAndDropActivity"
             android:exported="false" />
         <activity
             android:name=".main.CreateNoteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".clase.ButtonBarActivity"
-            android:exported="true" />
-        <activity
-            android:name=".clase.QuotesActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".clase.ParticlesActivity"
             android:exported="true" />
         <activity
             android:name=".main.LoginActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".main.MainActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

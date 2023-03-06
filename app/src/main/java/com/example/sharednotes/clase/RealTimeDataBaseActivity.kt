@@ -1,16 +1,13 @@
-package com.example.sharednotes.main
+package com.example.sharednotes.clase
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.sharednotes.databinding.ActivityRealTimeDataBaseBinding
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.example.sharednotes.main.Note
+import com.example.sharednotes.main.NotesViewModel
+import com.example.sharednotes.main.User
 
 class RealTimeDataBaseActivity : AppCompatActivity() {
 
@@ -34,7 +31,6 @@ class RealTimeDataBaseActivity : AppCompatActivity() {
         val aUser = User("francisco", aUserNotes)
 
         notesViewModel.writeUserNotes(aUser)
-        notesViewModel.subscribeAt(aUser)
 
         notesViewModel.currentUserNotes.observe(this) {
             Toast.makeText(this, "Something changed", Toast.LENGTH_SHORT).show()

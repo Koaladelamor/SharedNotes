@@ -5,6 +5,8 @@ import com.example.sharednotes.main.Note
 object NotesManager {
     val myNotes = arrayListOf<Note>()
 
+    var userEmail = ""
+
     fun addNote(_title : String, _description : String, _reminder : String, _recipient : String, _sender : String)
     {
         val newNote = Note(title = _title, description = _description, reminder = _reminder, recipient = _recipient, sender = _sender)

@@ -19,14 +19,20 @@ class MyNotesFragment : Fragment() {
     private lateinit var binding: FragmentMyNotesBinding
     private lateinit var adapter: MyNotesRecyclerViewAdapter
 
+    private var myUser = User(NotesManager.userEmail, arrayListOf())
+
     private val notesViewModel: NotesViewModel by viewModels()
 
-    val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         val note = it.data?.extras?.getSerializable("newNote")
-        if (it.resultCode == RESULT_OK && note is Note){
-//            notesViewModel.addNoteToUser(null, note)
-        } else {
+        if (it.resultCode == RESULT_OK && note is Note)
+        {
+            //Toast.makeText(requireContext(), note.title, Toast.LENGTH_SHORT).show()
 
+            notesViewModel.addNoteToUser(myUser, note)
+            Toast.makeText(requireContext(), "Note added", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(requireContext(), "Adding note cancelled", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -36,33 +42,23 @@ class MyNotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //newNote("Compra pan", "Urgente", "Mamá", "Hijo")
-        //newNote("Entrega", "Muy importante", "Yo", "")
 
         binding = FragmentMyNotesBinding.inflate(inflater)
         adapter = MyNotesRecyclerViewAdapter(NotesManager.myNotes, requireContext())
         binding.MyNotesRecyclerView.adapter = adapter
-        //adapter.updateNotesList(NotesManager.myNotes)
 
         binding.addNoteButton.setOnClickListener{
             val intent = Intent(requireContext(), CreateNoteActivity::class.java)
-//            startActivity(intent)
             launcher.launch(intent)
         }
 
-        val aUserNotes: ArrayList<Note> = arrayListOf()
-//        val newNote = Note(1, "compra pan", "acuerdate cabron")
-//        val newNote2 = Note(2, "compra agua", "fresquita plz")
-//        aUserNotes.add(newNote)
-//        aUserNotes.add(newNote2)
-        val aUser = User("francisco", aUserNotes)
+        Toast.makeText(requireContext(), NotesManager.userEmail, Toast.LENGTH_SHORT).show()
 
-        notesViewModel.getNotesFromUser(aUser)
-        notesViewModel.subscribeAt(aUser)
+        notesViewModel.getNotesFromUser(myUser)
 
         notesViewModel.currentUserNotes.observe(requireActivity()) {
             adapter.updateNotesList(it)
-            Toast.makeText(requireContext(), "Something changed", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext(), "Notes have been updated", Toast.LENGTH_SHORT).show()
         }
 
         return binding.root

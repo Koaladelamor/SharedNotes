@@ -19,24 +19,19 @@ class CreateNoteActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.newNoteAddButton.setOnClickListener {
-//            NotesManager.addNote(
-//                binding.newNoteTitle.text.toString(),
-//                binding.newNoteDescription.text.toString(),
-//                binding.newNoteReminderDate.text.toString(),
-//                "Yo", ""
-//            )
-            val newNote = Note(0,
+            val newNote = Note(-1,
                 binding.newNoteTitle.text.toString(),
                 binding.newNoteDescription.text.toString(),
                 false,
                 binding.newNoteReminderDate.text.toString(),
-                "Yo", ""
+                NotesManager.userEmail,
+                NotesManager.userEmail
             )
 
             // go to main activity
             val responseIntent = Intent()
             responseIntent.putExtra("newNote", newNote)
-            setResult(RESULT_OK)
+            setResult(RESULT_OK, responseIntent)
             finish()
         }
 
