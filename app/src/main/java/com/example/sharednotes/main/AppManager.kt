@@ -1,8 +1,10 @@
 package com.example.sharednotes.main
 
-import com.example.sharednotes.main.Note
+import com.google.firebase.auth.FirebaseAuth
 
-object NotesManager {
+object AppManager {
+
+    public lateinit var firebaseAuth: FirebaseAuth
     val myNotes = arrayListOf<Note>()
 
     var userEmail = ""
@@ -11,5 +13,9 @@ object NotesManager {
     {
         val newNote = Note(title = _title, description = _description, reminder = _reminder, recipient = _recipient, sender = _sender)
         myNotes.add(newNote)
+    }
+
+    fun setFireBaseInstance(firebaseInstance : FirebaseAuth){
+        firebaseAuth = firebaseInstance
     }
 }

@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.sharednotes.databinding.ActivityCreateNoteBinding
-import com.example.sharednotes.databinding.ActivityParticlesBinding
 
 class CreateNoteActivity : AppCompatActivity() {
 
@@ -24,8 +23,8 @@ class CreateNoteActivity : AppCompatActivity() {
                 binding.newNoteDescription.text.toString(),
                 false,
                 binding.newNoteReminderDate.text.toString(),
-                NotesManager.userEmail,
-                NotesManager.userEmail
+                AppManager.userEmail,
+                AppManager.userEmail
             )
 
             // go to main activity
