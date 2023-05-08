@@ -13,7 +13,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     lateinit var firebaseAuth: FirebaseAuth
-    lateinit var customToken : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +21,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = Firebase.auth
-        //customToken = firebaseAuth.toString()
-        //.setFireBaseInstance(firebaseAuth)
 
         binding.loginButton.setOnClickListener {
             val username = binding.userInput.text.toString()
@@ -40,27 +37,11 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
 
-            }.addOnFailureListener{
+                }.addOnFailureListener{
                     Toast.makeText(this, "Incorrect user or password", Toast.LENGTH_SHORT).show()
                 }
 
-            /*customToken?.let {
-                firebaseAuth.signInWithCustomToken(it)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(this, "Authentication successful.", Toast.LENGTH_SHORT).show()
-
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-            }*/
-
         }
-
-
 
 
         binding.goToRegisterButton.setOnClickListener {

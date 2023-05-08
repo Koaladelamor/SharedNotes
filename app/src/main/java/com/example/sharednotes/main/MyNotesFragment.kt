@@ -49,21 +49,18 @@ class MyNotesFragment : Fragment() {
             launcher.launch(intent)
         }
 
-        Toast.makeText(requireContext(), AppManager.userEmail, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(requireContext(), AppManager.userEmail, Toast.LENGTH_SHORT).show()
 
         notesViewModel.getNotesFromUser(myUser)
 
         notesViewModel.currentUserNotes.observe(requireActivity()) {
-            adapter.updateNotesList(it)
+            if(it != null){
+                adapter.updateNotesList(it)
+            }
             //Toast.makeText(requireContext(), "Notes have been updated", Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
     }
 
-    fun newNote(_title : String, _description : String, _recipient : String, _sender : String)
-    {
-        val newNote = Note(title = _title, description = _description, recipient = _recipient, sender = _sender)
-        AppManager.myNotes.add(newNote)
-    }
 }

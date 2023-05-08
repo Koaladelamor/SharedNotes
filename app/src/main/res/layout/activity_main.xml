@@ -8,17 +8,24 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainFragmentContainer"
+        android:name="com.example.sharednotes.main.MyNotesFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainBottomNavigation" />
+        app:layout_constraintTop_toBottomOf="@+id/mainBottomNavigation"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/mainBottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#00952A"
+        app:backgroundTint="#00952A"
+        app:itemIconTint="@android:color/primary_text_dark"
+        app:itemTextColor="@android:color/primary_text_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Add new note"
+        android:text="Send new note request"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/newNoteCardView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +85,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/newNoteDescriptionTitle" />
 
+            <TextView
+                android:id="@+id/requestRecipientTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Recipient"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newNoteDescription" />
+
+            <EditText
+                android:id="@+id/requestRecipient"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:ems="10"
+                android:hint="Send to:"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/requestRecipientTitle" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -97,7 +122,6 @@
         android:layout_marginBottom="8dp"
         android:backgroundTint="#FF0000"
         android:text="Cancel"
-        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -108,8 +132,7 @@
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#BBFF00"
-        android:text="Add"
-        android:textColor="#000000"
+        android:text="Send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

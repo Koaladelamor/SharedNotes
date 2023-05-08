@@ -1,13 +1,10 @@
-package com.example.sharednotes.clase
+package com.example.sharednotes.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.sharednotes.R
 import androidx.fragment.app.Fragment
 import com.example.sharednotes.databinding.ActivityButtonBarBinding
-import com.example.sharednotes.main.MyNotesFragment
-import com.example.sharednotes.main.RequestsFragment
-import com.example.sharednotes.main.SentNotesFragment
 
 class ButtonBarActivity : AppCompatActivity() {
 
@@ -21,13 +18,13 @@ class ButtonBarActivity : AppCompatActivity() {
 
         val myNotes = MyNotesFragment()
         val requests = RequestsFragment()
-        val sentNotes = SentNotesFragment()
+        //val sentNotes = SentNotesFragment()
 
         binding.bottomNavigationViewClase.setOnItemSelectedListener {
             when (it.itemId){
-                R.id.firstButton -> setFragment(myNotes)
-                R.id.secondButton -> setFragment(requests)
-                R.id.thirdButton -> setFragment(sentNotes)
+                R.id.myNotesButton -> setFragment(myNotes)
+                R.id.requestsButton -> setFragment(requests)
+                //R.id.thirdButton -> setFragment(sentNotes)
             }
             true
         }

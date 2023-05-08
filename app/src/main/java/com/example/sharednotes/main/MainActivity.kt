@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val myNotesFrag = MyNotesFragment()
         val requestsFrag = RequestsFragment()
-        val sentFrag = SentNotesFragment()
+        //val sentFrag = SentNotesFragment()
 
         binding.mainBottomNavigation.setOnItemSelectedListener {
             when (it.itemId){
-                R.id.firstButton -> setFragment(myNotesFrag)
-                R.id.secondButton -> setFragment(requestsFrag)
-                R.id.thirdButton -> setFragment(sentFrag)
+                R.id.myNotesButton -> setFragment(myNotesFrag)
+                R.id.requestsButton -> setFragment(requestsFrag)
+                //R.id.thirdButton -> setFragment(sentFrag)
             }
             true
         }

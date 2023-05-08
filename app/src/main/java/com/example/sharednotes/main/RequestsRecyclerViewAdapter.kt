@@ -7,25 +7,24 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sharednotes.R
-import com.example.sharednotes.main.Note
-import com.example.sharednotes.databinding.ItemNoteBinding
+import com.example.sharednotes.databinding.ItemNoteRequestBinding
 
-class MyNotesRecyclerViewAdapter(
+class RequestsRecyclerViewAdapter(
     var myNotes: ArrayList<Note>,
     val context: Context
-) : RecyclerView.Adapter<MyNotesRecyclerViewAdapter.NoteVH>() {
+) : RecyclerView.Adapter<RequestsRecyclerViewAdapter.NoteVH>() {
 
-    inner class NoteVH(binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class NoteVH(binding: ItemNoteRequestBinding) : RecyclerView.ViewHolder(binding.root) {
         val title = binding.NoteTitle
         val description = binding.NoteDescription
         val recipient = binding.NoteRecipient
         //val reminder = binding.NoteReminder
+        val status = binding.NoteRequestStatus
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteVH {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ItemNoteBinding.inflate(layoutInflater, parent, false)
+        val binding = ItemNoteRequestBinding.inflate(layoutInflater, parent, false)
         return NoteVH(binding)
     }
 
@@ -35,6 +34,7 @@ class MyNotesRecyclerViewAdapter(
         holder.description.text = note.description
         holder.recipient.text = note.recipient
         //holder.reminder.text = note.reminder
+        holder.status.text = holder.status.text.toString().plus(note.status)
         holder.title.setOnLongClickListener {
             showRenameDialog(note, position)
             true

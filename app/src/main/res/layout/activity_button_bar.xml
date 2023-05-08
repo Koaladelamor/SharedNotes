@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".clase.ButtonBarActivity">
+    tools:context=".main.ButtonBarActivity">
 
     <FrameLayout
         android:id="@+id/fragmentContainerClase"
@@ -21,8 +21,13 @@
         android:id="@+id/bottomNavigationViewClase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#00952A"
+        app:backgroundTint="#00952A"
+        app:itemIconTint="@android:color/primary_text_dark"
+        app:itemTextColor="@android:color/primary_text_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,6 @@ package com.example.sharednotes.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.example.sharednotes.databinding.ActivityRealTimeDataBaseBinding
 import com.example.sharednotes.databinding.ActivitySharedPreferencesBinding
 
 class SharedPreferencesActivity : AppCompatActivity() {

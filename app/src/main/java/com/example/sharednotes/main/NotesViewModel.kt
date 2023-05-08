@@ -18,20 +18,33 @@ class NotesViewModel : ViewModel() {
 
     var currentUserNotes = MutableLiveData<ArrayList<Note>>()
     var isListenerAdded = false
+
+
     fun getNotesFromUser(user: User){
         database.child(user.username).get().addOnSuccessListener {
             if (it.value == null)
+            {
+                database.child(user.username).setValue(user.userNotes).addOnSuccessListener {
+                    if (!isListenerAdded) {
+                        subscribeAt(user)
+                    }
+                }.addOnFailureListener{
+                    println("Error: Couldn't create new user.")
+                }
+
                 return@addOnSuccessListener
+            }
 
             val genericTypeIndicator = object : GenericTypeIndicator<ArrayList<Note>>() {}
             val notesList = it.getValue(genericTypeIndicator)
             currentUserNotes.postValue(notesList ?: arrayListOf())
+            notifyObservers()
 
             if (notesList != null && !isListenerAdded) {
                 subscribeAt(user)
             }
         }.addOnFailureListener{
-
+            println("Error: Couldn't get notes from user.")
         }
     }
 

@@ -13,7 +13,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
 
-    //private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseAuth: FirebaseAuth
 
     //private val notesViewModel: NotesViewModel by viewModels()
 
@@ -23,7 +23,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //firebaseAuth = Firebase.auth
+        firebaseAuth = Firebase.auth
 
         binding.registerButton.setOnClickListener {
 
@@ -31,14 +31,11 @@ class RegisterActivity : AppCompatActivity() {
             val password = binding.passwordInput.text.toString()
 
 
-            AppManager.firebaseAuth.createUserWithEmailAndPassword(username, password)
+            firebaseAuth.createUserWithEmailAndPassword(username, password)
                 .addOnSuccessListener {
                     //save username and load main activity
-                    val name = username.replace(".", "")
-                    AppManager.userEmail = name
-
-                    //add notes path
-
+                    //val name = username.replace(".", "")
+                    //AppManager.userEmail = name
 
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
@@ -52,13 +49,4 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    /*public override fun onStart() {
-        super.onStart()
-
-        val currentUser = firebaseAuth.currentUser
-        if(currentUser == null){
-            Toast.makeText(this, "Firebase Error", Toast.LENGTH_SHORT).show()
-            firebaseAuth = Firebase.auth
-        }
-    }*/
 }
