@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     //save username and load main activity
                     val name = username.replace(".", "")
-                    AppManager.userEmail = name
+                    AppManager.setCurrentUser(name, username)
 
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)

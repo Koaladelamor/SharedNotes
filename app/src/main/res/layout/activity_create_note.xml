@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MainBackGroundTitleColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00952A"
@@ -9,6 +10,7 @@
 
     <TextView
         android:id="@+id/createNoteTitle"
+        style="@style/TextCustomStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -24,19 +26,20 @@
         android:id="@+id/newNoteCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createNoteTitle">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/MainBackGroundColor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#BFBFBF">
 
             <EditText
                 android:id="@+id/newNoteTitle"
+                style="@style/TextCustomStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -45,6 +48,7 @@
                 android:ems="36"
                 android:hint="My title"
                 android:inputType="text"
+                android:maxLength="25"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +56,7 @@
 
             <TextView
                 android:id="@+id/newNoteTitleTitle"
+                style="@style/TextCustomStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="64dp"
@@ -62,6 +67,7 @@
 
             <TextView
                 android:id="@+id/newNoteDescriptionTitle"
+                style="@style/TextCustomStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -72,6 +78,7 @@
 
             <EditText
                 android:id="@+id/newNoteDescription"
+                style="@style/TextCustomStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -80,6 +87,7 @@
                 android:ems="124"
                 android:hint="My description"
                 android:inputType="textPersonName"
+                android:maxLength="130"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#FF0000"
         android:text="Cancel"
         android:textColor="#000000"
@@ -106,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#BBFF00"
         android:text="Add"
         android:textColor="#000000"

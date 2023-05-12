@@ -15,9 +15,9 @@ import com.example.sharednotes.databinding.FragmentRequestsBinding
 
 class RequestsFragment : Fragment() {
     private lateinit var binding: FragmentRequestsBinding
-    private lateinit var adapter: MyNotesRecyclerViewAdapter
+    private lateinit var adapter: RequestsRecyclerViewAdapter
 
-    private var myUser = User(AppManager.userEmail, arrayListOf())
+    //private var myUser = User(AppManager.userEmail, arrayListOf(), arrayListOf())
 
     private val notesViewModel: NotesViewModel by viewModels()
 
@@ -27,10 +27,11 @@ class RequestsFragment : Fragment() {
         {
             //Toast.makeText(requireContext(), note.title, Toast.LENGTH_SHORT).show()
 
-            notesViewModel.addNoteToUser(myUser, note)
-            Toast.makeText(requireContext(), "Note added", Toast.LENGTH_SHORT).show()
+            notesViewModel.addRequestToUser(AppManager.currentUser, note)
+            Toast.makeText(requireContext(), "Request sent", Toast.LENGTH_SHORT).show()
+            //println(note.recipient)
         } else {
-            Toast.makeText(requireContext(), "Adding note cancelled", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext(), "Request canceled", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -42,7 +43,7 @@ class RequestsFragment : Fragment() {
 
 
         binding = FragmentRequestsBinding.inflate(inflater)
-        adapter = MyNotesRecyclerViewAdapter(AppManager.myNotes, requireContext())
+        adapter = RequestsRecyclerViewAdapter(AppManager.myNotes, requireContext(), notesViewModel)
         binding.RequestsRecyclerView.adapter = adapter
 
         binding.createRequestButton.setOnClickListener{
@@ -52,14 +53,14 @@ class RequestsFragment : Fragment() {
 
         //Toast.makeText(requireContext(), AppManager.userEmail, Toast.LENGTH_SHORT).show()
 
-        //notesViewModel.getNotesFromUser(myUser)
+        notesViewModel.getRequestsFromUser(AppManager.currentUser)
 
-        /*notesViewModel.currentUserNotes.observe(requireActivity()) {
+        notesViewModel.currentRequests.observe(requireActivity()) {
             if(it != null){
                 adapter.updateNotesList(it)
             }
             //Toast.makeText(requireContext(), "Notes have been updated", Toast.LENGTH_SHORT).show()
-        }*/
+        }
 
         return binding.root
     }

@@ -19,60 +19,77 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/NotesStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#BBFF00"
-            android:backgroundTint="#BBFF00">
+            android:background="#FFFFFF">
 
             <TextView
                 android:id="@+id/NoteTitle"
+                style="@style/TextCustomStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Some title"
-                android:textColor="#000000"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/NoteDescription"
+                style="@style/TextCustomStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="20dp"
                 android:inputType="textMultiLine"
                 android:maxLines="3"
                 android:minHeight="48dp"
                 android:text="My description"
-                android:textColor="#000000"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/deleteNoteButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NoteTitle" />
 
             <TextView
                 android:id="@+id/NoteRecipient"
+                style="@style/TextCustomStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="Name"
-                android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/NoteReminder"
+                style="@style/TextCustomStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:textColor="#000000"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NoteDescription"
                 tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/deleteNoteButton"
+                style="@style/DeleteButtonStyle"
+                android:layout_width="48dp"
+                android:layout_height="55dp"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="@string/app_name"
+                android:hapticFeedbackEnabled="false"
+                app:icon="@drawable/ic_baseline_delete_forever_24"
+                app:iconGravity="textEnd"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

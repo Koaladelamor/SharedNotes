@@ -13,13 +13,15 @@ import com.example.sharednotes.databinding.ItemNoteBinding
 
 class MyNotesRecyclerViewAdapter(
     var myNotes: ArrayList<Note>,
-    val context: Context
+    val context: Context,
+    val notesVM: NotesViewModel
 ) : RecyclerView.Adapter<MyNotesRecyclerViewAdapter.NoteVH>() {
 
     inner class NoteVH(binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
         val title = binding.NoteTitle
         val description = binding.NoteDescription
         val recipient = binding.NoteRecipient
+        val deleteNote = binding.deleteNoteButton
         //val reminder = binding.NoteReminder
     }
 
@@ -40,6 +42,9 @@ class MyNotesRecyclerViewAdapter(
             true
         }
 
+        holder.deleteNote.setOnClickListener {
+            notesVM.deleteNote(position, AppManager.currentUser.username)
+        }
 
     }
 

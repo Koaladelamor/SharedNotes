@@ -16,7 +16,7 @@ class MyNotesFragment : Fragment() {
     private lateinit var binding: FragmentMyNotesBinding
     private lateinit var adapter: MyNotesRecyclerViewAdapter
 
-    private var myUser = User(AppManager.userEmail, arrayListOf())
+    //private var myUser = User(AppManager.userEmail, arrayListOf(), arrayListOf())
 
     private val notesViewModel: NotesViewModel by viewModels()
 
@@ -26,10 +26,10 @@ class MyNotesFragment : Fragment() {
         {
             //Toast.makeText(requireContext(), note.title, Toast.LENGTH_SHORT).show()
 
-            notesViewModel.addNoteToUser(myUser, note)
-            Toast.makeText(requireContext(), "Note added", Toast.LENGTH_SHORT).show()
+            notesViewModel.addNoteToUser(AppManager.currentUser, note)
+            //Toast.makeText(requireContext(), "Note added", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(requireContext(), "Adding note cancelled", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext(), "Adding note cancelled", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -41,7 +41,7 @@ class MyNotesFragment : Fragment() {
 
 
         binding = FragmentMyNotesBinding.inflate(inflater)
-        adapter = MyNotesRecyclerViewAdapter(AppManager.myNotes, requireContext())
+        adapter = MyNotesRecyclerViewAdapter(AppManager.myNotes, requireContext(), notesViewModel)
         binding.MyNotesRecyclerView.adapter = adapter
 
         binding.addNoteButton.setOnClickListener{
@@ -51,7 +51,7 @@ class MyNotesFragment : Fragment() {
 
         //Toast.makeText(requireContext(), AppManager.userEmail, Toast.LENGTH_SHORT).show()
 
-        notesViewModel.getNotesFromUser(myUser)
+        notesViewModel.getNotesFromUser(AppManager.currentUser)
 
         notesViewModel.currentUserNotes.observe(requireActivity()) {
             if(it != null){

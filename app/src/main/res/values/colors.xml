@@ -8,6 +8,19 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="lightGrey">#DADADA</color>
+    <color name="darkGrey">#494949</color>
+
+    <color name="lightGreen">#C4FFC4</color>
+    <color name="green">#00FF00</color>
+    <color name="darkGreen">#406E40</color>
+
+    <color name="darkGreen2">#5A7A5A</color>
+    <color name="lightGreen2">#E4FBE4</color>
+
+    <color name="lightRed">#FF6262</color>
+    <color name="darkRed">#671111</color>
+
     <color name="quarks">#673AB7</color>
     <color name="leptons">#009688</color>
     <color name="gauge_bosons">#E91E63</color>

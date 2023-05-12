@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MainBackGroundTitleColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00952A"
@@ -9,34 +10,35 @@
 
     <TextView
         android:id="@+id/createNoteTitle"
+        style="@style/TextCustomStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="Send new note request"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/newNoteCardView"
+        app:layout_constraintBottom_toTopOf="@+id/requestCardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/newNoteCardView"
+        android:id="@+id/requestCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createNoteTitle">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/MainBackGroundColor"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#BFBFBF">
+            android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/newNoteTitle"
+                android:id="@+id/requestTitle"
+                style="@style/TextCustomStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -45,13 +47,15 @@
                 android:ems="36"
                 android:hint="My title"
                 android:inputType="text"
+                android:maxLength="20"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/newNoteTitleTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/requestTitleTitle" />
 
             <TextView
-                android:id="@+id/newNoteTitleTitle"
+                android:id="@+id/requestTitleTitle"
+                style="@style/TextCustomStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="64dp"
@@ -61,17 +65,19 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/newNoteDescriptionTitle"
+                android:id="@+id/requestDescriptionTitle"
+                style="@style/TextCustomStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/newNoteTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/requestTitle" />
 
             <EditText
-                android:id="@+id/newNoteDescription"
+                android:id="@+id/requestDescription"
+                style="@style/TextCustomStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -80,23 +86,26 @@
                 android:ems="124"
                 android:hint="My description"
                 android:inputType="textPersonName"
+                android:maxLength="100"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/newNoteDescriptionTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/requestDescriptionTitle" />
 
             <TextView
                 android:id="@+id/requestRecipientTitle"
+                style="@style/TextCustomStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Recipient"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/newNoteDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/requestDescription" />
 
             <EditText
                 android:id="@+id/requestRecipient"
+                style="@style/TextCustomStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -105,6 +114,7 @@
                 android:ems="10"
                 android:hint="Send to:"
                 android:inputType="textPersonName"
+                android:maxLength="20"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -115,24 +125,26 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/newNoteCancelButton"
+        android:id="@+id/requestCancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#FF0000"
         android:text="Cancel"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/newNoteAddButton"
+        android:id="@+id/requestAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#BBFF00"
         android:text="Send"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

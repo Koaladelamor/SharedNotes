@@ -13,75 +13,100 @@
         android:backgroundTint="#000000"
         android:outlineProvider="none"
         app:cardCornerRadius="2dp"
-        app:contentPadding="8px"
+        app:contentPadding="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/NotesStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#BBFF00"
-            android:backgroundTint="#BBFF00">
+            android:background="#FFFFFF">
+
+            <TextView
+                android:id="@+id/FromTextView"
+                style="@style/TextCustomStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="From:"
+                app:layout_constraintBottom_toBottomOf="@+id/NoteRecipient"
+                app:layout_constraintEnd_toStartOf="@+id/NoteRecipient"
+                app:layout_constraintTop_toTopOf="@+id/NoteRecipient" />
 
             <TextView
                 android:id="@+id/NoteTitle"
+                style="@style/TextCustomStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Some title"
-                android:textColor="#000000"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/NoteDescription"
+                style="@style/TextCustomStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
                 android:inputType="textMultiLine"
                 android:maxLines="3"
                 android:minHeight="48dp"
                 android:text="My description"
-                android:textColor="#000000"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/CancelRequestButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NoteTitle" />
 
             <TextView
                 android:id="@+id/NoteRecipient"
+                style="@style/TextCustomStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="Name"
-                android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/NoteReminder"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:textColor="#000000"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/NoteDescription"
-                tools:visibility="visible" />
-
-            <TextView
-                android:id="@+id/NoteRequestStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Request status: "
+            <Button
+                android:id="@+id/AcceptRequestButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="#00CF00"
+                android:contentDescription="@string/app_name"
+                android:isScrollContainer="false"
+                android:textAlignment="center"
+                app:icon="@drawable/ic_baseline_check_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/NoteDescription" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.8" />
+
+            <Button
+                android:id="@+id/CancelRequestButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="#FF0000"
+                android:contentDescription="@string/app_name"
+                app:icon="@drawable/ic_baseline_close_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/AcceptRequestButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

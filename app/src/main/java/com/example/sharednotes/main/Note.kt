@@ -8,7 +8,7 @@ class Note(
     //var reminder: String="",
     var recipient: String="",
     var sender: String="",
-    var status: String=""
+    //var status: String=""
 ): java.io.Serializable {
     fun editNote(_title : String, _description : String, _recipient : String, _sender : String)
     {

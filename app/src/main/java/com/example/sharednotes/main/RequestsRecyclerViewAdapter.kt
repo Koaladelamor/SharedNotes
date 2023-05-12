@@ -6,20 +6,27 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sharednotes.databinding.ItemNoteRequestBinding
 
+
 class RequestsRecyclerViewAdapter(
-    var myNotes: ArrayList<Note>,
-    val context: Context
+    var myRequests: ArrayList<Note>,
+    val context: Context,
+    val notesVM: NotesViewModel
 ) : RecyclerView.Adapter<RequestsRecyclerViewAdapter.NoteVH>() {
+
+    //private val notesViewModel: NotesViewModel by viewModels()
 
     inner class NoteVH(binding: ItemNoteRequestBinding) : RecyclerView.ViewHolder(binding.root) {
         val title = binding.NoteTitle
         val description = binding.NoteDescription
         val recipient = binding.NoteRecipient
         //val reminder = binding.NoteReminder
-        val status = binding.NoteRequestStatus
+        //val status = binding.NoteRequestStatus
+        val acceptRequest = binding.AcceptRequestButton
+        val cancelRequest = binding.CancelRequestButton
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteVH {
@@ -29,18 +36,26 @@ class RequestsRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: NoteVH, position: Int) {
-        val note = myNotes[position]
-        holder.title.text = note.title
-        holder.description.text = note.description
-        holder.recipient.text = note.recipient
+        val request = myRequests[position]
+        holder.title.text = request.title
+        holder.description.text = request.description
+        holder.recipient.text = request.recipient
         //holder.reminder.text = note.reminder
-        holder.status.text = holder.status.text.toString().plus(note.status)
+        //holder.status.text = holder.status.text.toString().plus(note.status)
         holder.title.setOnLongClickListener {
-            showRenameDialog(note, position)
+            showRenameDialog(request, position)
             true
         }
 
+        holder.acceptRequest.setOnClickListener {
+            val recipient = request.recipient.replace(".", "")
+            notesVM.acceptRequest(position, recipient)
+        }
 
+        holder.cancelRequest.setOnClickListener {
+            val recipient = request.recipient.replace(".", "")
+            notesVM.rejectRequest(position, recipient)
+        }
     }
 
     private fun showRenameDialog(note: Note, position: Int) {
@@ -64,11 +79,11 @@ class RequestsRecyclerViewAdapter(
 
 
     fun updateNotesList(notes: ArrayList<Note>) {
-        this.myNotes = notes
+        this.myRequests = notes
         notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return myNotes.size
+        return myRequests.size
     }
 }

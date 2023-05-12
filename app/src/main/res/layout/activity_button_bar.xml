@@ -8,6 +8,7 @@
 
     <FrameLayout
         android:id="@+id/fragmentContainerClase"
+        style="@style/MainBackGroundColor"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewClase"
@@ -19,10 +20,10 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationViewClase"
+        style="@style/MainBackGroundTitleColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00952A"
-        app:backgroundTint="#00952A"
+        android:background="#FFFFFF"
         app:itemIconTint="@android:color/primary_text_dark"
         app:itemTextColor="@android:color/primary_text_dark"
         app:layout_constraintBottom_toBottomOf="parent"

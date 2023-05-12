@@ -25,7 +25,7 @@ class CreateNoteActivity : AppCompatActivity() {
                 //binding.newNoteReminderDate.text.toString(),
                 AppManager.userEmail,
                 AppManager.userEmail,
-                ""
+                //""
             )
 
             // go to main activity

@@ -25,7 +25,7 @@
         tools:node="merge"
         tools:targetApi="31">
         <activity
-            android:name=".CreateRequestActivity"
+            android:name=".main.CreateRequestActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -35,24 +35,12 @@
             android:name=".main.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".clase.ImageCaptureActivity"
-            android:exported="true" />
-        <activity
             android:name=".main.SharedPreferencesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".clase.RealTimeDataBaseActivity"
-            android:exported="true" />
-        <activity
-            android:name=".clase.DragAndDropActivity"
             android:exported="false" />
         <activity
             android:name=".main.CreateNoteActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".clase.ParticlesActivity"
-            android:exported="true" />
         <activity
             android:name=".main.LoginActivity"
             android:exported="true">

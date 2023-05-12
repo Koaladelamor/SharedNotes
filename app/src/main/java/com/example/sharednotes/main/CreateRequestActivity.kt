@@ -17,25 +17,26 @@ class CreateRequestActivity : AppCompatActivity() {
         binding = ActivityCreateRequestBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.newNoteAddButton.setOnClickListener {
+        binding.requestAddButton.setOnClickListener {
             val newRequest = Note(-1,
-                binding.newNoteTitle.text.toString(),
-                binding.newNoteDescription.text.toString(),
+                binding.requestTitle.text.toString(),
+                binding.requestDescription.text.toString(),
                 //false,
                 //binding.newNoteReminderDate.text.toString(),
                 binding.requestRecipient.text.toString(),
                 AppManager.userEmail,
-                "Pending"
+                //"Pending"
             )
 
             // go to main activity
+            //println(newRequest.recipient)
             val responseIntent = Intent()
             responseIntent.putExtra("newRequest", newRequest)
             setResult(RESULT_OK, responseIntent)
             finish()
         }
 
-        binding.newNoteCancelButton.setOnClickListener {
+        binding.requestCancelButton.setOnClickListener {
             // torna a main
             setResult(RESULT_CANCELED)
             finish()
